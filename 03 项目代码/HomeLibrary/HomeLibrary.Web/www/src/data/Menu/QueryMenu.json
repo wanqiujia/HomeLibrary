@@ -1,0 +1,59 @@
+﻿[
+  {
+    "Title": "图书分类管理",
+    "Url": null,
+    "Icon": "icon-cogs",
+    "SubMenu": [ ]
+  },
+
+  {
+    "Title": "图书信息管理",
+    "Url": "",
+    "Icon": "icon-bar-chart",
+    "SubMenu": [
+      {
+        "Title": "新增图书",
+        "Url": "",
+        "Icon": "icon-bar-chart",
+        "SubMenu": null
+      },
+      {
+        "Title": "在线阅读",
+        "Url": "",
+        "Icon": "icon-bar-chart",
+        "SubMenu": null
+      }
+    ]
+  },
+  {
+    "Title": "阅读笔记管理",
+    "Url": "",
+    "Icon": "icon-bar-chart",
+    "SubMenu": null
+  },
+  {
+    "Title": "阅读计划",
+    "Url": "layout_ajax.html",
+    "Icon": "icon-table",
+    "SubMenu": null
+  },
+  {
+    "Title": "借阅人管理",
+    "Url": "",
+    "Icon": "icon-bar-chart",
+    "SubMenu": null
+  },
+  {
+    "Title": "图书借阅管理",
+    "Url": "",
+    "Icon": "icon-bar-chart",
+    "SubMenu": null
+  },
+  {
+    "Title": "信息统计",
+    "Url": "",
+    "Icon": "icon-bar-chart",
+    "SubMenu": null
+  }
+
+]

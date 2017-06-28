@@ -609,6 +609,9 @@
     <Content Include="adminTemplate\media\image\glyphiconshalflings-regular.ttf" />
     <Content Include="adminTemplate\media\image\glyphiconshalflings-regular.woff" />
     <Content Include="adminTemplate\media\image\js" />
+    <Content Include="www\src\controller\sidebarController.js" />
+    <None Include="www\src\data\Menu\QueryMenu.json" />
+    <Content Include="www\src\service\menuService.js" />
     <Content Include="www\views\home.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2062,10 +2065,8 @@
     <Folder Include="www\assets\plugins\ng-table\docs\app\vendor\angular-messages\" />
     <Folder Include="www\assets\plugins\ng-table\docs\app\vendor\angular-route\" />
     <Folder Include="www\assets\plugins\ng-table\docs\app\vendor\angular\" />
-    <Folder Include="www\src\data\" />
     <Folder Include="www\src\directive\" />
     <Folder Include="www\src\filter\" />
-    <Folder Include="www\src\service\" />
     <Folder Include="www\template\userTemplate\" />
   </ItemGroup>
   <PropertyGroup>

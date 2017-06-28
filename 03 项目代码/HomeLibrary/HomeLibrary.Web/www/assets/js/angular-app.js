@@ -92,8 +92,12 @@ adminApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvide
         })
 }]);
 
-adminApp.run(function ($rootScope, $state, API_URL, API_DURL, Restangular, localStorageService) {
-    Restangular.setBaseUrl(API_URL);
+adminApp.run(function ($rootScope, $state, BaseConfig, Restangular, localStorageService) {
+    if (BaseConfig.IsOffLine == "true") {
+        Restangular.setBaseUrl(BaseConfig.Data_URL);
+    } else {
+        Restangular.setBaseUrl(BaseConfig.API_URL);
+    }
 
     $rootScope.identity = localStorageService.get('identity');
     var token = '';
