@@ -1,0 +1,6 @@
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Common\bin\Debug\HomeLibrary.Common.dll
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Common\bin\Debug\HomeLibrary.Common.pdb
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Common\obj\Debug\HomeLibrary.Common.dll
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Common\obj\Debug\HomeLibrary.Common.pdb
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Common\bin\Debug\log4net.dll
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Common\obj\Debug\HomeLibrary.Common.csprojResolveAssemblyReference.cache

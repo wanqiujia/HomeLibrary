@@ -1,0 +1,6 @@
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.UnitTest\bin\Debug\HomeLibrary.UnitTest.dll
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.UnitTest\bin\Debug\HomeLibrary.UnitTest.pdb
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.UnitTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.UnitTest\bin\Debug\zh-Hans\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.UnitTest\obj\Debug\HomeLibrary.UnitTest.dll
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.UnitTest\obj\Debug\HomeLibrary.UnitTest.pdb

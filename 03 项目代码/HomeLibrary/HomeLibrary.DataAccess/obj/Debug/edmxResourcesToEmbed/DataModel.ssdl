@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HomeLibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISBN" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="BookName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Author" Type="varchar" MaxLength="50" />
+    <Property Name="Publisher" Type="varchar" MaxLength="50" />
+    <Property Name="BookCategoryID" Type="int" />
+    <Property Name="StatusID" Type="tinyint" Nullable="false" />
+    <Property Name="Language" Type="varchar" MaxLength="50" />
+    <Property Name="Icon" Type="varchar" MaxLength="100" />
+    <Property Name="Description" Type="varchar" MaxLength="1000" />
+    <Property Name="BookSize" Type="varchar" MaxLength="10" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Revision" Type="varchar" MaxLength="50" />
+    <Property Name="TypeID" Type="tinyint" Nullable="false" />
+    <Property Name="BoughtTime" Type="datetime" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUserID" Type="int" Nullable="false" />
+    <Property Name="LastModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="LastModifyUserID" Type="int" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUserID" Type="int" Nullable="false" />
+    <Property Name="LastModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="LastModifyUserID" Type="int" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookNote">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookID" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" />
+    <Property Name="BeginTime" Type="datetime" />
+    <Property Name="EndTime" Type="datetime" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUserID" Type="int" Nullable="false" />
+    <Property Name="LastModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="LastModifyUserID" Type="int" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Borrower">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BorrowerName" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="Gender" Type="tinyint" />
+    <Property Name="Cellphone" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="32" />
+    <Property Name="Relationship" Type="nvarchar" MaxLength="32" />
+    <Property Name="Record" Type="tinyint" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUserID" Type="int" Nullable="false" />
+    <Property Name="LastModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="LastModifyUserID" Type="int" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BorrowRecord">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookID" Type="int" Nullable="false" />
+    <Property Name="BorrowerID" Type="int" Nullable="false" />
+    <Property Name="StatusID" Type="tinyint" Nullable="false" />
+    <Property Name="BorrowTime" Type="datetime" Nullable="false" />
+    <Property Name="ReturnTime" Type="datetime" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUserID" Type="int" Nullable="false" />
+    <Property Name="LastModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="LastModifyUserID" Type="int" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Account" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="LastVisitTime" Type="datetime" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUserID" Type="int" />
+    <Property Name="LastModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="LastModifyUserID" Type="int" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Book_BookCategory">
+    <End Role="BookCategory" Type="Self.BookCategory" Multiplicity="0..1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BookCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="BookCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Book_User_CreateUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="CreateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Book_User_LastModifyUser">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="LastModifyUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookCategory_User_CreateUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="BookCategory" Type="Self.BookCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BookCategory">
+        <PropertyRef Name="CreateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookCategory_User_LastModifyUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="BookCategory" Type="Self.BookCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BookCategory">
+        <PropertyRef Name="LastModifyUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookNote_Book">
+    <End Role="Book" Type="Self.Book" Multiplicity="1" />
+    <End Role="BookNote" Type="Self.BookNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BookNote">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookNote_User_CreateUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="BookNote" Type="Self.BookNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BookNote">
+        <PropertyRef Name="CreateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookNote_User_LastModifyUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="BookNote" Type="Self.BookNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BookNote">
+        <PropertyRef Name="LastModifyUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Borrower_User_CreateUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Borrower" Type="Self.Borrower" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Borrower">
+        <PropertyRef Name="CreateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Borrower_User_LastModifyUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Borrower" Type="Self.Borrower" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Borrower">
+        <PropertyRef Name="LastModifyUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BorrowRecord_Book">
+    <End Role="Book" Type="Self.Book" Multiplicity="1" />
+    <End Role="BorrowRecord" Type="Self.BorrowRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BorrowRecord">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BorrowRecord_Borrower">
+    <End Role="Borrower" Type="Self.Borrower" Multiplicity="1" />
+    <End Role="BorrowRecord" Type="Self.BorrowRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Borrower">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BorrowRecord">
+        <PropertyRef Name="BorrowerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BorrowRecord_User_CreateUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="BorrowRecord" Type="Self.BorrowRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BorrowRecord">
+        <PropertyRef Name="CreateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BorrowRecord_User_LastModifyUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="BorrowRecord" Type="Self.BorrowRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BorrowRecord">
+        <PropertyRef Name="LastModifyUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_User_CreateUser">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="User1" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="CreateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_User_LastModifyUser">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="User1" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="LastModifyUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HomeLibraryModelStoreContainer">
+    <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookCategory" EntityType="Self.BookCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookNote" EntityType="Self.BookNote" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Borrower" EntityType="Self.Borrower" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BorrowRecord" EntityType="Self.BorrowRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Book_BookCategory" Association="Self.FK_Book_BookCategory">
+      <End Role="BookCategory" EntitySet="BookCategory" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Book_User_CreateUser" Association="Self.FK_Book_User_CreateUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Book_User_LastModifyUser" Association="Self.FK_Book_User_LastModifyUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Book" EntitySet="Book" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookCategory_User_CreateUser" Association="Self.FK_BookCategory_User_CreateUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="BookCategory" EntitySet="BookCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookCategory_User_LastModifyUser" Association="Self.FK_BookCategory_User_LastModifyUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="BookCategory" EntitySet="BookCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookNote_Book" Association="Self.FK_BookNote_Book">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="BookNote" EntitySet="BookNote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookNote_User_CreateUser" Association="Self.FK_BookNote_User_CreateUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="BookNote" EntitySet="BookNote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookNote_User_LastModifyUser" Association="Self.FK_BookNote_User_LastModifyUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="BookNote" EntitySet="BookNote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Borrower_User_CreateUser" Association="Self.FK_Borrower_User_CreateUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Borrower" EntitySet="Borrower" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Borrower_User_LastModifyUser" Association="Self.FK_Borrower_User_LastModifyUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Borrower" EntitySet="Borrower" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BorrowRecord_Book" Association="Self.FK_BorrowRecord_Book">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="BorrowRecord" EntitySet="BorrowRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BorrowRecord_Borrower" Association="Self.FK_BorrowRecord_Borrower">
+      <End Role="Borrower" EntitySet="Borrower" />
+      <End Role="BorrowRecord" EntitySet="BorrowRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BorrowRecord_User_CreateUser" Association="Self.FK_BorrowRecord_User_CreateUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="BorrowRecord" EntitySet="BorrowRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BorrowRecord_User_LastModifyUser" Association="Self.FK_BorrowRecord_User_LastModifyUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="BorrowRecord" EntitySet="BorrowRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_User_CreateUser" Association="Self.FK_User_User_CreateUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="User1" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_User_LastModifyUser" Association="Self.FK_User_User_LastModifyUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="User1" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

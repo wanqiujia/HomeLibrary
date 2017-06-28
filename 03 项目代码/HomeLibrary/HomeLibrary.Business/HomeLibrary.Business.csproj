@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D3F3C0A5-9EEA-4C98-8FE8-9350A50706E5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HomeLibrary.Business</RootNamespace>
+    <AssemblyName>HomeLibrary.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business\BookBusiness.cs">
+      <DependentUpon>Business.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Business\BookCategoryBusiness.cs">
+      <DependentUpon>Business.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Business\BookNoteBusiness.cs">
+      <DependentUpon>Business.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Business\BorrowerBusiness.cs">
+      <DependentUpon>Business.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Business\BorrowRecordBusiness.cs">
+      <DependentUpon>Business.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Business\Business.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Business.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Business\UserBusiness.cs">
+      <DependentUpon>Business.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransactionHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Business\Business.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Business.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BusinessPartial\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HomeLibrary.Common\HomeLibrary.Common.csproj">
+      <Project>{11010787-a0fb-44d5-a42f-44bf60131a68}</Project>
+      <Name>HomeLibrary.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeLibrary.DataAccess\HomeLibrary.DataAccess.csproj">
+      <Project>{f8b6d330-0d85-4f17-aac3-3c62188648b0}</Project>
+      <Name>HomeLibrary.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeLibrary.Model\HomeLibrary.Model.csproj">
+      <Project>{c043e12c-e20d-4bfe-bbb1-72e34ad2b81b}</Project>
+      <Name>HomeLibrary.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

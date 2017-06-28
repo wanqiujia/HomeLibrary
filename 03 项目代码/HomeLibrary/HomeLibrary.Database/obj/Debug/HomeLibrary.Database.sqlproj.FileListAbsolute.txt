@@ -1,0 +1,5 @@
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Database\bin\Debug\HomeLibrary.Database.dacpac
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Database\bin\Debug\HomeLibrary.Database.dll
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Database\bin\Debug\HomeLibrary.Database.pdb
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Database\obj\Debug\HomeLibrary.Database.dll
+E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Database\obj\Debug\HomeLibrary.Database.pdb

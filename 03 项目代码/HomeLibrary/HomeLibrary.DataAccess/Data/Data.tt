@@ -1,0 +1,220 @@
+﻿<#@ template language="C#" debug="false" hostspecific="true"#>
+<#@ include file="../GetSummery.ttinclude" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ output extension=".cs"#>
+<#
+    var TableDescrpition = Table();
+	var ColumnDescrpition = Column();
+#>
+<#
+
+CodeGenerationTools code = new CodeGenerationTools(this);
+MetadataLoader loader = new MetadataLoader(this);
+CodeRegion region = new CodeRegion(this);
+MetadataTools ef = new MetadataTools(this);
+
+string inputFile = @"../DataModel.edmx";
+MetadataWorkspace metadataWorkspace = null;
+bool allMetadataLoaded =loader.TryLoadAllMetadata(inputFile, out metadataWorkspace);
+EdmItemCollection ItemCollection = (EdmItemCollection)metadataWorkspace.GetItemCollection(DataSpace.CSpace);
+OriginalValueMembers originalValueMembers = new OriginalValueMembers(allMetadataLoaded, metadataWorkspace, ef);
+string namespaceName = "HomeLibrary.DataAccess";//code.VsNamespaceSuggestion();
+
+EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
+
+// Emit Entity Types
+EntityContainer container = ItemCollection.GetItems<EntityContainer>().FirstOrDefault();
+if (container == null)
+{
+    return "// No EntityContainer exists in the model, so no code was generated";
+}
+
+// Write out support code to primary template output file
+WriteHeader(fileManager, "HomeLibrary.Common", "HomeLibrary.Model");
+
+foreach (EntitySet entitySet in container.BaseEntitySets.OfType<EntitySet>())
+{
+	int keyCount = 0;
+    string strInputParameter = "";
+	string strParameter = "";
+	string strParameterWithType = "";
+	string strLinqStr = "";
+	foreach (EdmProperty property in entitySet.ElementType.Properties.Where(p => p.DeclaringType == entitySet.ElementType && p.TypeUsage.EdmType is PrimitiveType))
+	{
+		if (ef.IsKey(property))
+		{
+			strParameter = code.CamelCase(code.Escape(property)).Replace("iD", "id");
+			strInputParameter = code.CamelCase(entitySet.ElementType.Name) + "." + code.Escape(property);
+			strParameterWithType = code.SpaceAfter(code.Escape(property.TypeUsage)) + code.CamelCase(code.Escape(property)).Replace("iD", "id");
+			strLinqStr = " x." + code.Escape(property) + " == " + code.CamelCase(code.Escape(property)).Replace("iD", "id");
+			keyCount++;
+		}
+	}
+	if(keyCount > 1)
+	{
+		continue;
+	}
+
+	fileManager.StartNewFile(code.Escape(entitySet.ElementType) + "Data.cs");
+    BeginNamespace(namespaceName, code);
+#>
+	/// <summary>
+	/// <#=TableDescrpition[code.Escape(entitySet.ElementType)]#>数据访问
+	/// </summary>
+	public partial class <#=code.Escape(entitySet.ElementType)#>Data : DataBase
+    {
+		/// <summary>
+		/// 新增<#=TableDescrpition[code.Escape(entitySet.ElementType)]#>
+		/// </summary>
+		/// <param name="<#=code.CamelCase(entitySet.ElementType.Name)#>"><#=TableDescrpition[code.Escape(entitySet.ElementType)]#></param>
+		public static void Add<#=code.Escape(entitySet.ElementType)#>(<#=code.Escape(entitySet.ElementType)#> <#=code.CamelCase(entitySet.ElementType.Name)#>)
+		{
+			Context.<#=entitySet.Name#>.Add(<#=code.CamelCase(entitySet.ElementType.Name)#>);
+		}
+
+		/// <summary>
+		/// 修改<#=TableDescrpition[code.Escape(entitySet.ElementType)]#>
+		/// </summary>
+		/// <param name="<#=code.CamelCase(entitySet.ElementType.Name)#>"><#=TableDescrpition[code.Escape(entitySet.ElementType)]#></param>
+		public static void Update<#=code.Escape(entitySet.ElementType)#>(<#=code.Escape(entitySet.ElementType)#> <#=code.CamelCase(entitySet.ElementType.Name)#>)
+		{
+			Context.Entry(<#=code.CamelCase(entitySet.ElementType.Name)#>).State = EntityState.Modified;
+		}
+
+		/// <summary>
+		/// 删除<#=TableDescrpition[code.Escape(entitySet.ElementType)]#>
+		/// </summary>
+		/// <param name="<#=code.CamelCase(entitySet.ElementType.Name)#>"><#=TableDescrpition[code.Escape(entitySet.ElementType)]#></param>
+		public static void Remove<#=code.Escape(entitySet.ElementType)#>(<#=code.Escape(entitySet.ElementType)#> <#=code.CamelCase(entitySet.ElementType.Name)#>)
+		{
+			Context.<#=entitySet.Name#>.Remove(<#=code.CamelCase(entitySet.ElementType.Name)#>);
+		}
+
+		/// <summary>
+		/// 获取<#=TableDescrpition[code.Escape(entitySet.ElementType)]#>
+		/// </summary>
+		/// <param name="<#=strParameter#>">唯一编号</param>
+		/// <returns><#=TableDescrpition[code.Escape(entitySet.ElementType)]#></returns>
+		public static <#=code.Escape(entitySet.ElementType)#> Get<#=code.Escape(entitySet.ElementType)#>(<#=strParameterWithType#>)
+		{
+			return Context.<#=entitySet.Name#>.Find(<#=strParameter#>);
+		}
+
+		/// <summary>
+		/// 根据条件查询<#=TableDescrpition[code.Escape(entitySet.ElementType)]#>
+		/// </summary>
+        /// <param name="predicate">查询条件</param>
+        /// <param name="pages">分页信息</param>
+        /// <returns><#=TableDescrpition[code.Escape(entitySet.ElementType)]#>集合</returns>
+		public static List<<#=code.Escape(entitySet.ElementType)#>> Query<#=code.Escape(entitySet.ElementType)#>(Expression<Func<<#=code.Escape(entitySet.ElementType)#>, bool>> predicate, Pages pages = null)
+		{
+			return Utility.SplitPage(Context.<#=entitySet.Name#>.Where(predicate), pages).ToList();
+		}
+    }
+<#
+	EndNamespace(namespaceName);
+}
+
+fileManager.Process();
+#>
+<#+
+void WriteHeader(EntityFrameworkTemplateFileManager fileManager, params string[] extraUsings)
+{
+    fileManager.StartHeader();
+#>
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+
+<#=String.Join(String.Empty, extraUsings.Select(u => "using " + u + ";" + Environment.NewLine).ToArray())#>
+<#+
+    fileManager.EndBlock();
+}
+
+void BeginNamespace(string namespaceName, CodeGenerationTools code)
+{
+    CodeRegion region = new CodeRegion(this);
+    if (!String.IsNullOrEmpty(namespaceName))
+    {
+#>
+namespace <#=code.EscapeNamespace(namespaceName)#>
+{
+<#+
+    }
+}
+
+void EndNamespace(string namespaceName)
+{
+    if (!String.IsNullOrEmpty(namespaceName))
+    {
+        PopIndent();
+#>
+}
+<#+
+    }
+}
+
+// Set recordRequiredOriginalValuesOnly to false in the OriginalValueMembers constructor in order to always record all original values
+public class OriginalValueMembers
+{
+    private readonly HashSet<EdmProperty> _concurrencyMembers;
+
+    public OriginalValueMembers(bool recordRequiredOriginalValuesOnly, MetadataWorkspace metadataWorkspace, MetadataTools metadataTools)
+    {
+        if (recordRequiredOriginalValuesOnly)
+        {
+            try
+            {
+                _concurrencyMembers = new HashSet<EdmProperty>();
+                foreach (EntityContainer container in metadataWorkspace.GetItems<EntityContainer>(DataSpace.CSpace))
+                {
+                    ILookup<EntityType, EntityType> directSubTypeLookup = metadataWorkspace.GetItems<EntityType>(DataSpace.CSpace).ToLookup(e => (EntityType)e.BaseType);
+                    foreach (EntitySetBase eSet in container.BaseEntitySets.Where(es => es.BuiltInTypeKind == BuiltInTypeKind.EntitySet))
+                    {
+                        List<EntityType> subTypes = new List<EntityType>();
+                        GetSubtypes(directSubTypeLookup, (EntityType)eSet.ElementType, subTypes);
+                        foreach (EntityType eType in subTypes)
+                        {
+                            foreach (EdmProperty member in metadataWorkspace.GetRequiredOriginalValueMembers(eSet, eType))
+                            {
+                                _concurrencyMembers.Add(member);
+                            }
+                        }
+                    }
+                }
+
+                // GetRequiredOriginalValueMembers will not always return foreign key properties, but they are required
+                foreach (AssociationType assoc in metadataWorkspace.GetItems<AssociationType>(DataSpace.CSpace).Where(a => a.IsForeignKey))
+                {
+                    foreach (EdmProperty toProperty in assoc.ReferentialConstraints[0].ToProperties)
+                    {
+                        _concurrencyMembers.Add(toProperty);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // If any exceptions occur, fall back to always recording original values for all properties
+                _concurrencyMembers = null;
+            }
+        }
+    }
+
+    public bool IsOriginalValueMember(EdmProperty edmProperty)
+    {
+        return _concurrencyMembers == null || _concurrencyMembers.Contains(edmProperty);
+    }
+
+    private static void GetSubtypes(ILookup<EntityType, EntityType> lookup, EntityType eType, List<EntityType> subTypes)
+    {
+        subTypes.Add(eType);
+        foreach (EntityType subType in lookup[eType])
+        {
+            GetSubtypes(lookup, subType, subTypes);
+        }
+    }
+}
+#>

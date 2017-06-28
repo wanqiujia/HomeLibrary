@@ -1,0 +1,71 @@
+﻿<#@ assembly name="System.Data" #>
+<#@ assembly name="System.Configuration" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Data.Common" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Globalization" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Configuration" #>
+<#+
+	string _connectionString=@"server=ZJ-PC\MSSQLSERVER2008R;uid=sa;pwd=Password@1;database=HomeLibrary";
+	public string ConnectionString{
+	    get {
+	        return _connectionString;
+	    }
+    }
+
+
+	const string TABLE_DESCRIPTION_SQL=@"SELECT a.name AS TABLE_NAME, b.value AS DESCRIPTION
+		FROM Sysobjects a
+		LEFT OUTER JOIN sys.extended_properties b ON a.id = b.major_id AND b.minor_id = 0
+		WHERE  type='U'";
+
+	const string COLUMN_DESCRIPTION_SQL=@"SELECT Sysobjects.name AS TABLE_NAME, a.name AS COLUMN_NAME, b.value AS DESCRIPTION
+		FROM syscolumns a
+		INNER JOIN sysobjects ON a.id = sysobjects.id  AND sysobjects.type = 'U'
+		LEFT OUTER JOIN sys.extended_properties b ON a.id = b.major_id AND a.colid = b.minor_id";
+
+	IDataReader GetReader(string sql){
+		SqlConnection conn=new SqlConnection(ConnectionString);
+		SqlCommand cmd=new SqlCommand(sql,conn);
+		conn.Open();
+		return cmd.ExecuteReader(CommandBehavior.CloseConnection);
+	}
+	SqlCommand GetCommand(string sql){
+		SqlConnection conn=new SqlConnection(ConnectionString);
+		SqlCommand cmd=new SqlCommand(sql,conn);
+		conn.Open();
+		return cmd;
+	}
+
+	Dictionary<string, string>Table()
+	{
+		var result=new Dictionary<string, string>();
+       
+		//pull the tables in a reader
+		using(IDataReader rdr=GetReader(TABLE_DESCRIPTION_SQL)){
+			while(rdr.Read()){
+				result.Add(rdr["TABLE_NAME"].ToString(), rdr["DESCRIPTION"].ToString());
+			}
+		}
+
+		return result;
+	}
+
+	Dictionary<string, string>Column()
+	{
+		var result=new Dictionary<string, string>();
+       
+		//pull the tables in a reader
+		using(IDataReader rdr=GetReader(COLUMN_DESCRIPTION_SQL)){
+			while(rdr.Read()){
+				if(!result.Keys.Contains(rdr["TABLE_NAME"].ToString() + rdr["COLUMN_NAME"].ToString()))
+				result.Add(rdr["TABLE_NAME"].ToString() + rdr["COLUMN_NAME"].ToString(), rdr["DESCRIPTION"].ToString());
+			}
+		}
+
+		return result;
+	}
+#>

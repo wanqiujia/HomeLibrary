@@ -1,0 +1,67 @@
+﻿<div style="background-color:#303030;">
+    <!-- BEGIN HEADER -->
+    <style type="text/css">
+        body {
+            background-image: none;
+            background-color: #303030;
+        }
+    </style>
+    <div ng-include src="'template/header.html'"></div>
+
+    <!-- END HEADER -->
+    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/">网页模板</a></div>
+
+    <!-- BEGIN CONTAINER -->
+
+    <div class="page-container">
+
+        <!-- BEGIN SIDEBAR -->
+
+        <div ng-include src="'template/sidebar.html'"></div>
+
+        <!-- END SIDEBAR -->
+        <!-- BEGIN PAGE -->
+
+        <div class="page-content" style="background-color:#666;">
+
+            <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+            <div id="portlet-config" class="modal hide">
+
+                <div class="modal-header">
+
+                    <button data-dismiss="modal" class="close" type="button"></button>
+
+                    <h3>Widget Settings</h3>
+
+                </div>
+
+                <div class="modal-body">
+
+                    Widget settings form goes here
+
+                </div>
+
+            </div>
+
+            <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+            <!-- BEGIN PAGE CONTAINER-->
+
+            <div ng-include src="'template/container.html'"></div>
+
+            <!-- END PAGE CONTAINER-->
+
+        </div>
+
+        <!-- END PAGE -->
+
+    </div>
+
+    <!-- END CONTAINER -->
+    <!-- BEGIN FOOTER -->
+
+    <div ng-include src="'template/footer.html'"></div>
+
+    <!-- END FOOTER -->
+
+</div>
