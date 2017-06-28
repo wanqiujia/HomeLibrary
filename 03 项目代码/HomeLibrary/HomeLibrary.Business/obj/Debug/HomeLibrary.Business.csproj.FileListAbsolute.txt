@@ -17,3 +17,22 @@ E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibr
 E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\HomeLibrary.DataAccess.pdb
 E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\HomeLibrary.Model.pdb
 E:\My Documents\Applications\01 HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\log4net.dll
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\HomeLibrary.Business.dll.config
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\HomeLibrary.Business.dll
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\HomeLibrary.Business.pdb
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\EntityFramework.dll
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\EntityFramework.SqlServer.dll
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\HomeLibrary.Common.dll
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\HomeLibrary.DataAccess.dll
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\HomeLibrary.Model.dll
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\log4net.dll
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\HomeLibrary.Common.pdb
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\HomeLibrary.DataAccess.pdb
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\HomeLibrary.Model.pdb
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\EntityFramework.xml
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\EntityFramework.SqlServer.xml
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\obj\Debug\HomeLibrary.Business.csprojResolveAssemblyReference.cache
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\obj\Debug\HomeLibrary.Business.dll
+E:\My Documents\Applications\02 HomeLibrary Git\HomeLibrary.git\HomeLibrary\03 项目代码\HomeLibrary\HomeLibrary.Business\obj\Debug\HomeLibrary.Business.pdb
