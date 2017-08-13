@@ -609,9 +609,12 @@
     <Content Include="adminTemplate\media\image\glyphiconshalflings-regular.ttf" />
     <Content Include="adminTemplate\media\image\glyphiconshalflings-regular.woff" />
     <Content Include="adminTemplate\media\image\js" />
+    <Content Include="www\src\controller\categoryManagementController.js" />
     <Content Include="www\src\controller\sidebarController.js" />
+    <Content Include="www\src\data\category\QueryCategory.json" />
     <None Include="www\src\data\Menu\QueryMenu.json" />
     <Content Include="www\src\service\menuService.js" />
+    <Content Include="www\views\category\categoryManagement.html" />
     <Content Include="www\views\home.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
