@@ -1,59 +1,46 @@
 ﻿[
   {
     "Title": "图书分类管理",
-    "Url": null,
-    "Icon": "icon-cogs",
+    "Url": "app.category.categoryManagement",
+    "Icon": "icon-list",
     "SubMenu": [ ]
   },
 
   {
     "Title": "图书信息管理",
     "Url": "",
-    "Icon": "icon-bar-chart",
-    "SubMenu": [
-      {
-        "Title": "新增图书",
-        "Url": "",
-        "Icon": "icon-bar-chart",
-        "SubMenu": null
-      },
-      {
-        "Title": "在线阅读",
-        "Url": "",
-        "Icon": "icon-bar-chart",
-        "SubMenu": null
-      }
-    ]
+    "Icon": "icon-book",
+    "SubMenu": [ ]
   },
   {
     "Title": "阅读笔记管理",
     "Url": "",
-    "Icon": "icon-bar-chart",
-    "SubMenu": null
+    "Icon": "icon-pencil",
+    "SubMenu": [ ]
   },
   {
     "Title": "阅读计划",
     "Url": "layout_ajax.html",
-    "Icon": "icon-table",
-    "SubMenu": null
+    "Icon": "icon-calendar",
+    "SubMenu": [ ]
   },
   {
     "Title": "借阅人管理",
     "Url": "",
-    "Icon": "icon-bar-chart",
-    "SubMenu": null
+    "Icon": "icon-user",
+    "SubMenu": [ ]
   },
   {
     "Title": "图书借阅管理",
     "Url": "",
-    "Icon": "icon-bar-chart",
-    "SubMenu": null
+    "Icon": "icon-share",
+    "SubMenu": [ ]
   },
   {
     "Title": "信息统计",
     "Url": "",
     "Icon": "icon-bar-chart",
-    "SubMenu": null
+    "SubMenu": [ ]
   }
 
 ]

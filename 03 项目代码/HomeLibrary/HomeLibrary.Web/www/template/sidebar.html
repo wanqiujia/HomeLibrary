@@ -26,7 +26,7 @@
 
                     <input type="text" placeholder="Search..." />
 
-                    <input type="button" class="submit" value=" " />
+                    <input type="button" class="submit" value="" />
 
                 </div>
 
@@ -36,38 +36,45 @@
 
         </li>
 
-        <li class="start active ">
+        <li class="start" ng-class="{active:$state.includes('app.home')}" style="cursor:pointer;">
 
-            <a href="index.html">
+            <a ui-serf="app.home">
 
                 <i class="icon-home"></i>
 
-                <span class="title">Dashboard{{menus}}</span>
+                <span class="title">Dashboard</span>
 
-                <span class="selected"></span>
+                <span ng-class="{selected:$state.includes('app.home')}"></span>
             </a>
 
         </li>
-       
-        <li class="" ng-repeat="menu in menus">
 
-            <a href="javascript:;" ui-serf="{{menu.Url}}">
+        <li ng-repeat="menu in menus" ng-class="{active:$state.includes(menu.Url)}" style="cursor:pointer;">
+            <!--主菜单没有子菜单时显示为一个有链接的菜单-->
+            <a ng-if="menu.SubMenu.length==0" ui-sref="{{menu.Url}}">
+                <i class="{{menu.Icon}}"></i>
+                <span class="title">{{menu.Title}}</span>
+                <span ng-class="{selected:$state.includes(menu.Url)}"></span>
+            </a>
 
-                <i class="icon-cogs"></i>
+            <!--主菜单有子菜单时显示为一个下拉式的菜单-->
+            <a ng-if="menu.SubMenu.length > 0">
+
+                <i class="{{menu.Icon}}"></i>
 
                 <span class="title">{{menu.Title}}</span>
-
-                <span class="arrow "></span>
+                <span ng-class="{selected:$state.includes(menu.Url)}"></span>
+                <span class="arrow " ng-class="{open:$state.includes(menu.Url)}"></span>
 
             </a>
 
-            <ul class="sub-menu" ng-if="menu.SubMenu && menu.SubMenu.length>0">
+            <ul class="sub-menu" ng-if="menu.SubMenu.length > 0" style="cursor:pointer;">
 
-                <li ng-repeat="sub in menu.SubMenu">
+                <li ng-repeat="sub in menu.SubMenu" ng-class="{active:$state.includes(sub.Url)}">
 
-                    <a href="javascript:;" ui-serf="{{sub.Url}}">
+                    <a ui-serf="{{sub.Url}}">
 
-                       {{sub.Title}}
+                        {{sub.Title}}
                     </a>
 
                 </li>
@@ -75,12 +82,12 @@
             </ul>
 
         </li>
-        
-        <li class="last ">
+
+        <li class="last " style="cursor:pointer;">
 
             <a ui-sref="member.login">
 
-                <i class="icon-log-out"></i>
+                <i class="icon-key"></i>
 
                 <span class="title">Logout</span>
 

@@ -1,4 +1,4 @@
-﻿adminApp.controller('sidebarController', ['$scope', 'menuService', '$state', function ($scope, menuService, $state) {
+﻿adminApp.controller('categoryManagementController', ['$scope', 'menuService', '$state', function ($scope, menuService, $state) {
 
     $scope.menus = [];
 

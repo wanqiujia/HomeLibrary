@@ -65,6 +65,26 @@ adminApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvide
             template: '<div ui-view></div>',
             abstract: true
         })
+        .state('app.base', {
+            url: '/base',
+            template: '<div ui-view></div>',
+            abstract: true
+        })
+        .state('app.category', {
+            url: '/category',
+            template: '<div ui-view></div>',
+            abstract: true
+        })
+        .state('app.category.categoryManagement', {
+            url: '/categoryManagement',
+            data: { pageTitle: '图书分类' },
+            templateUrl: 'views/category/categoryManagement.html'
+        })
+        .state('app.export', {
+            url: '/base',
+            template: '<div ui-view></div>',
+            abstract: true
+        })
         .state('app.setting.password', {
             url: '/password',
             data: { pageTitle: '密码修改' },
@@ -79,16 +99,6 @@ adminApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvide
             url: '/userInfo',
             data: { pageTitle: '用户信息' },
             templateUrl: 'views/userInfo.html'
-        })
-        .state('app.base', {
-            url: '/base',
-            template: '<div ui-view></div>',
-            abstract: true
-        })
-        .state('app.export', {
-            url: '/base',
-            template: '<div ui-view></div>',
-            abstract: true
         })
 }]);
 
