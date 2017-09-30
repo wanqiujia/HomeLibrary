@@ -21,7 +21,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvide
         })
         .state('main.default', {
             url: '/default',
-            data: { pageTitle: '图书管理' },
+            data: { pageTitle: '图书管理',smallTitle:'' },
             templateUrl: 'default.html'
         })
         .state('member', {
@@ -41,7 +41,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvide
         })
         .state('app.home', {
             url: '/home',
-            data: { pageTitle: '首页' },
+            data: { pageTitle: '首页', smallTitle: 'statistics and more' },
             templateUrl: 'views/home.html',
             resolve: {
                 service: ['$ocLazyLoad', function ($ocLazyLoad) {

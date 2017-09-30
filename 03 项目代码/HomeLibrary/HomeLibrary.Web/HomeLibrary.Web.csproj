@@ -610,6 +610,7 @@
     <Content Include="adminTemplate\media\image\glyphiconshalflings-regular.woff" />
     <Content Include="adminTemplate\media\image\js" />
     <Content Include="www\src\controller\categoryManagementController.js" />
+    <Content Include="www\src\controller\containerController.js" />
     <Content Include="www\src\controller\sidebarController.js" />
     <Content Include="www\src\data\category\QueryCategory.json" />
     <None Include="www\src\data\Menu\QueryMenu.json" />

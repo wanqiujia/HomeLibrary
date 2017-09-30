@@ -1,4 +1,12 @@
 ﻿[
+  
+  {
+    "Title": "首页",
+    "Url": "app.home",
+    "Icon": "icon-home",
+    "SubMenu": [ ]
+  },
+
   {
     "Title": "图书分类管理",
     "Url": "app.category.categoryManagement",

@@ -1,5 +1,5 @@
 ﻿
-<div class="container-fluid">
+<div class="container-fluid" ng-controller="containerController">
 
     <!-- BEGIN PAGE HEADER-->
 
@@ -100,7 +100,7 @@
 
             <h3 class="page-title">
 
-                {{$state.current.data.pageTitle}} <small>statistics and more</small>
+             {{getMenuData().data.pageTitle}} <small>{{getMenuData().data.smallTitle}}</small>
 
             </h3>
 
@@ -142,7 +142,7 @@
 
     <!-- END PAGE HEADER-->
     <!-- begin #content -->
-    <div id="content" view-content class="page-content" style="background-color:#666;">
+    <div view-content> <!--id="dashboard" style="background-color:#666;"-->
         <div ui-view></div>
     </div>
     <!-- end #content -->

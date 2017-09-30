@@ -8,5 +8,9 @@
         });
     };
 
+    $scope.IsCurrentURL = function (url) {
+        return $state.includes(url);
+    };
+
     $scope.Init();
 }]);
