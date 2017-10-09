@@ -21,7 +21,7 @@ adminApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvide
         })
         .state('main.default', {
             url: '/default',
-            data: { pageTitle: '图书管理',smallTitle:'' },
+            data: { pageTitle: '图书管理', smallTitle: '' },
             templateUrl: 'default.html'
         })
         .state('member', {
@@ -70,6 +70,8 @@ adminApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvide
             template: '<div ui-view></div>',
             abstract: true
         })
+
+        //category
         .state('app.category', {
             url: '/category',
             template: '<div ui-view></div>',
@@ -77,9 +79,111 @@ adminApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvide
         })
         .state('app.category.categoryManagement', {
             url: '/categoryManagement',
-            data: { pageTitle: '图书分类' },
+            data: {
+                pageTitle: '图书分类', smallTitle: 'Book Category',
+                parentURL: 'app.category.categoryManagement',
+                parentPageTitle: '图书分类'
+            },
             templateUrl: 'views/category/categoryManagement.html'
         })
+
+        //book
+        .state('app.book', {
+            url: '/book',
+            template: '<div ui-view></div>',
+            abstract: true
+        })
+        .state('app.book.bookManagement', {
+            url: '/bookManagement',
+            data: {
+                pageTitle: '图书管理', smallTitle: 'Books',
+                parentURL: 'app.book.bookManagement',
+                parentPageTitle: '图书管理'
+            },
+            templateUrl: 'views/books/bookManagement.html'
+        })
+
+        //readingProject
+        .state('app.readingProject', {
+            url: '/readingProject',
+            template: '<div ui-view></div>',
+            abstract: true
+        })
+        .state('app.readingProject.readingProjectManagement', {
+            url: '/readingProjectManagement',
+            data: {
+                pageTitle: '阅读计划', smallTitle: 'Reading Project',
+                parentURL: 'app.readingProject.readingProjectManagement',
+                parentPageTitle: '阅读计划'
+            },
+            templateUrl: 'views/readingProject/readingProjectManagement.html'
+        })
+
+        //bookNotes
+        .state('app.bookNotes', {
+            url: '/bookNotes',
+            template: '<div ui-view></div>',
+            abstract: true
+        })
+        .state('app.bookNotes.bookNotesManagement', {
+            url: '/bookNotesManagement',
+            data: {
+                pageTitle: '阅读笔记', smallTitle: 'BookNotes',
+                parentURL: 'app.bookNotes.bookNotesManagement',
+                parentPageTitle: '阅读笔记'
+            },
+            templateUrl: 'views/bookNotes/bookNotesManagement.html'
+        })
+
+        //borrower
+        .state('app.borrower', {
+            url: '/borrower',
+            template: '<div ui-view></div>',
+            abstract: true
+        })
+        .state('app.borrower.borrowerManagement', {
+            url: '/borrowerManagement',
+            data: {
+                pageTitle: '借阅人管理', smallTitle: 'Borrower',
+                parentURL: 'app.borrower.borrowerManagement',
+                parentPageTitle: '借阅人管理'
+            },
+            templateUrl: 'views/borrower/borrowerManagement.html'
+        })
+
+        //borrowingRecords
+        .state('app.borrowingRecords', {
+            url: '/borrowingRecords',
+            template: '<div ui-view></div>',
+            abstract: true
+        })
+        .state('app.borrowingRecords.borrowingRecordsManagement', {
+            url: '/borrowingRecordsManagement',
+            data: {
+                pageTitle: '借阅管理', smallTitle: 'Borrowing Records',
+                parentURL: 'app.borrowingRecords.borrowingRecordsManagement',
+                parentPageTitle: '借阅管理'
+            },
+            templateUrl: 'views/borrowingRecords/borrowingRecordsManagement.html'
+        })
+
+        //statistics
+        .state('app.statistics', {
+            url: '/statistics',
+            template: '<div ui-view></div>',
+            abstract: true
+        })
+        .state('app.statistics.statisticsManagement', {
+            url: '/statisticsManagement',
+            data: {
+                pageTitle: '信息统计', smallTitle: 'Statistics',
+                parentURL: 'app.statistics.statisticsManagement',
+                parentPageTitle: '信息统计'
+            },
+            templateUrl: 'views/statistics/statisticsManagement.html'
+        })
+
+
         .state('app.export', {
             url: '/base',
             template: '<div ui-view></div>',

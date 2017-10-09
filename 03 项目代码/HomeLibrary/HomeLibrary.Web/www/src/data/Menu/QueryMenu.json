@@ -16,37 +16,37 @@
 
   {
     "Title": "图书信息管理",
-    "Url": "",
+    "Url": "app.book.bookManagement",
     "Icon": "icon-book",
     "SubMenu": [ ]
   },
   {
     "Title": "阅读笔记管理",
-    "Url": "",
+    "Url": "app.bookNotes.bookNotesManagement",
     "Icon": "icon-pencil",
     "SubMenu": [ ]
   },
   {
     "Title": "阅读计划",
-    "Url": "layout_ajax.html",
+    "Url": "app.readingProject.readingProjectManagement",
     "Icon": "icon-calendar",
     "SubMenu": [ ]
   },
   {
     "Title": "借阅人管理",
-    "Url": "",
+    "Url": "app.borrower.borrowerManagement",
     "Icon": "icon-user",
     "SubMenu": [ ]
   },
   {
     "Title": "图书借阅管理",
-    "Url": "",
+    "Url": "app.borrowingRecords.borrowingRecordsManagement",
     "Icon": "icon-share",
     "SubMenu": [ ]
   },
   {
     "Title": "信息统计",
-    "Url": "",
+    "Url": "app.statistics.statisticsManagement",
     "Icon": "icon-bar-chart",
     "SubMenu": [ ]
   }

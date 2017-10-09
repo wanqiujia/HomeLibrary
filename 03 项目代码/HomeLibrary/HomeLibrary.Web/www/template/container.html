@@ -110,13 +110,13 @@
 
                     <i class="icon-home"></i>
 
-                    <a ui-serf="app.home">Home</a>
+                    <a ui-serf="app.home">首页</a>
 
                     <i class="icon-angle-right"></i>
 
                 </li>
 
-                <li><a href="#">Dashboard</a></li>
+                <li><a ui-serf="{{getMenuData().data.parentURL}}">{{getMenuData().data.parentPageTitle}}</a></li>
 
                 <li class="pull-right no-text-shadow">
 

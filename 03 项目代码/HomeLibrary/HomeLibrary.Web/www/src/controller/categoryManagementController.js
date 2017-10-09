@@ -1,10 +1,10 @@
-﻿adminApp.controller('categoryManagementController', ['$scope', 'menuService', '$state', function ($scope, menuService, $state) {
+﻿adminApp.controller('categoryManagementController', ['$scope', 'categoryService', '$state', function ($scope, categoryService, $state) {
 
-    $scope.menus = [];
+    $scope.dataList = [];
 
     $scope.Init = function () {
-        menuService.query().then(function (data) {
-            $scope.menus = data;
+        categoryService.query().then(function (data) {
+            $scope.dataList = data;
         });
     };
 

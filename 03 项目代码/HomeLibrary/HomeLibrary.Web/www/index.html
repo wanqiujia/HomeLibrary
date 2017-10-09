@@ -53,11 +53,29 @@
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <!-- BEGIN PAGE LEVEL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES login-->
 
     <link href="media/css/login.css" rel="stylesheet" type="text/css" />
 
     <!-- END PAGE LEVEL STYLES -->
+
+
+
+    <!-- BEGIN PAGE LEVEL STYLES calendar-->
+
+    <link href="media/css/fullcalendar.css" rel="stylesheet" />
+
+    <!-- END PAGE LEVEL STYLES -->
+
+
+    <!-- BEGIN PAGE LEVEL STYLES table-->
+
+    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
+
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+
+    <!-- END PAGE LEVEL STYLES -->
+
 
     <link rel="shortcut icon" href="media/image/favicon.ico" />
 
@@ -88,6 +106,11 @@
     <script src="src/controller/sidebarController.js"></script>
     <script src="src/service/menuService.js"></script>
     <script src="src/controller/containerController.js"></script>
+
+
+    <script src="src/service/categoryService.js"></script>
+    <script src="src/controller/categoryManagementController.js"></script>
+
      <!-- ================== END Controller JS ================== -->
 
 
@@ -180,8 +203,22 @@
 
     <!-- END PAGE LEVEL SCRIPTS -->
 
+    <!-- BEGIN PAGE LEVEL SCRIPTS calendar-->
+    
+    <script src="media/js/calendar.js"></script>
+    
+    <!-- END PAGE LEVEL SCRIPTS -->
 
 
+    <!-- BEGIN PAGE LEVEL PLUGINS dataTables-->
+
+    <script type="text/javascript" src="media/js/select2.min.js"></script>
+
+    <script type="text/javascript" src="media/js/jquery.dataTables.js"></script>
+
+    <script type="text/javascript" src="media/js/DT_bootstrap.js"></script>
+
+    <!-- END PAGE LEVEL PLUGINS -->
 
     <script>
 
@@ -206,6 +243,11 @@
             Index.initIntro();
 
             Login.init();
+
+            Calendar.init();
+
+            //TableEditable.init();
+
         });
 
     </script>
