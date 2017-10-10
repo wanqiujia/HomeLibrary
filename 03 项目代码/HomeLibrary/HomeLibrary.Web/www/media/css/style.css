@@ -890,17 +890,17 @@ Page title
   font-size: 30px;
   letter-spacing: -1px;
   display: block;
-  color: #666;
+  color: #fff;
   margin: 20px 0px 15px 0px;
   font-weight: 300;
-  font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial;
+  font-family: "Microsoft YaHei","HelveticaNeue", "Helvetica Neue", Helvetica, Arial;
 }
 
 .page-title small {
   font-size: 14px;
   letter-spacing: 0px;
   font-weight: 300;
-  color: #888;
+  color: #ddd;
 }
 
 /***
